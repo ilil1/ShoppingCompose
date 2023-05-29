@@ -3,10 +3,10 @@ package com.example.domain.model
 data class Product(
     val productId : String,
     val productName : String,
-    val ImageUrl : String,
+    val imageUrl : String,
     val price : Price,
     val category: Category,
     val shop : Shop,
-    val inNew : Boolean,
+    val isNew : Boolean,
     val isFreeShipping : Boolean
 )
