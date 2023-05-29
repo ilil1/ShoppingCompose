@@ -1,25 +1,64 @@
 package com.example.data.repository
 
 import android.content.Context
+import com.example.domain.model.Category
 import com.example.domain.model.Product
 import com.example.domain.repository.MainRepository
-import com.google.gson.GsonBuilder
+import com.google.gson.*
 import com.google.gson.reflect.TypeToken
 import dagger.hilt.android.qualifiers.ApplicationContext
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
 import java.io.InputStreamReader
+import java.lang.reflect.Type
 import javax.inject.Inject
 
 class MainRepositoryImpl @Inject constructor(
     @ApplicationContext private val context : Context
 ) : MainRepository {
-    override fun getProductList(): List<Product> {
-        val inputStream = context.assets.open("product_list.json")
+    override fun getProductList(): Flow<List<Product>> = flow {
+
+        val inputStream = context.assets.open("product_list")
         val inputStreamReader = InputStreamReader(inputStream)
         val jsonString = inputStreamReader.readText()
 
         val type = object : TypeToken<List<Product>>() { }.type
 
-        return GsonBuilder().create().fromJson(jsonString, type)
+        //return GsonBuilder().create().fromJson(jsonString, type)
+
+        val gson = GsonBuilder()
+            .registerTypeAdapter(Category::class.java, CategoryTypeAdapter())
+            .create()
+
+        val products: List<Product> = gson.fromJson(jsonString, type)
+
+        emit(products)
+    }
+}
+
+class CategoryTypeAdapter : JsonDeserializer<Category>, JsonSerializer<Category> {
+    override fun deserialize(json: JsonElement, typeOfT: Type, context: JsonDeserializationContext): Category {
+        val jsonObject = json.asJsonObject
+        val categoryId = jsonObject.get("categoryId").asString
+        val categoryName = jsonObject.get("categoryName").asString
+
+        return when (categoryId) {
+            "1" -> Category.Top
+            "2" -> Category.Outerwear
+            "3" -> Category.Dress
+            "4" -> Category.Pants
+            "5" -> Category.Skirt
+            "6" -> Category.Shoes
+            "7" -> Category.Bag
+            "8" -> Category.FashionAccessories
+            else -> throw IllegalArgumentException("Invalid category id: $categoryId")
+        }
     }
 
+    override fun serialize(src: Category, typeOfSrc: Type, context: JsonSerializationContext): JsonElement {
+        val jsonObject = JsonObject()
+        jsonObject.addProperty("categoryId", src.categoryId)
+        jsonObject.addProperty("categoryName", src.categoryName)
+        return jsonObject
+    }
 }

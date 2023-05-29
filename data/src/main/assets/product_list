@@ -1,0 +1,107 @@
+[
+  {
+    "productId": "1",
+    "productName": "Product 1",
+    "imageUrl": "http://example.com/product1.jpg",
+    "price": {
+      "originPrice": 100,
+      "finalPrice": 80,
+      "salesStatus": "ON_SALE"
+    },
+    "category": {
+      "categoryId": "1",
+      "categoryName": "상의"
+    },
+    "shop": {
+      "shopId": "1",
+      "shopName": "Shop 1",
+      "imageUrl": "http://example.com/shop1.jpg"
+    },
+    "isNew": true,
+    "isFreeShipping": false
+  },
+  {
+    "productId": "2",
+    "productName": "Product 2",
+    "imageUrl": "http://example.com/product2.jpg",
+    "price": {
+      "originPrice": 200,
+      "finalPrice": 150,
+      "salesStatus": "NORMAL"
+    },
+    "category": {
+      "categoryId": "2",
+      "categoryName": "아우터"
+    },
+    "shop": {
+      "shopId": "2",
+      "shopName": "Shop 2",
+      "imageUrl": "http://example.com/shop2.jpg"
+    },
+    "isNew": false,
+    "isFreeShipping": true
+  },
+  {
+    "productId": "3",
+    "productName": "Product 3",
+    "imageUrl": "http://example.com/product3.jpg",
+    "price": {
+      "originPrice": 150,
+      "finalPrice": 120,
+      "salesStatus": "ON_SALE"
+    },
+    "category": {
+      "categoryId": "3",
+      "categoryName": "원피스"
+    },
+    "shop": {
+      "shopId": "3",
+      "shopName": "Shop 3",
+      "imageUrl": "http://example.com/shop3.jpg"
+    },
+    "isNew": true,
+    "isFreeShipping": false
+  },
+  {
+    "productId": "4",
+    "productName": "Product 4",
+    "imageUrl": "http://example.com/product4.jpg",
+    "price": {
+      "originPrice": 300,
+      "finalPrice": 250,
+      "salesStatus": "NORMAL"
+    },
+    "category": {
+      "categoryId": "4",
+      "categoryName": "바지"
+    },
+    "shop": {
+      "shopId": "4",
+      "shopName": "Shop 4",
+      "imageUrl": "http://example.com/shop4.jpg"
+    },
+    "isNew": false,
+    "isFreeShipping": true
+  },
+  {
+    "productId": "5",
+    "productName": "Product 5",
+    "imageUrl": "http://example.com/product5.jpg",
+    "price": {
+      "originPrice": 400,
+      "finalPrice": 350,
+      "salesStatus": "ON_SALE"
+    },
+    "category": {
+      "categoryId": "5",
+      "categoryName": "치마"
+    },
+    "shop": {
+      "shopId": "5",
+      "shopName": "Shop 5",
+      "imageUrl": "http://example.com/shop5.jpg"
+    },
+    "isNew": true,
+    "isFreeShipping": false
+  }
+]

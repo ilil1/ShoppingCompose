@@ -17,6 +17,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.example.presentation.ui.main.MainInsideScreen
 import com.example.presentation.ui.theme.ShoppingComposeTheme
 import com.example.presentation.viewmodel.MainViewModel
 
@@ -53,7 +54,7 @@ fun MainScreen() {
         }
     ) {
         //Scaffold 본문
-        MainNavigationScreen(navController = navController)
+        MainNavigationScreen(viewModel = viewModel, navController = navController)
     }
 }
 
@@ -83,11 +84,11 @@ fun Header(viewModel: MainViewModel) {
 }
 
 @Composable
-fun MainNavigationScreen(navController: NavHostController) {
+fun MainNavigationScreen(viewModel: MainViewModel, navController: NavHostController) {
     NavHost(navController = navController, startDestination = MainNavigationItem.Main.route,
         builder = {
             composable(MainNavigationItem.Main.route) {
-                Text(text = "Hello Main")
+                MainInsideScreen(viewModel)
             }
             composable(MainNavigationItem.Category.route) {
                 Text(text = "Hello Category")

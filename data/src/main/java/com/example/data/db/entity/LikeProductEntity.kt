@@ -16,11 +16,11 @@ data class LikeProductEntity(
     @PrimaryKey
     val productId : String,
     val productName : String,
-    val ImageUrl : String,
+    val imageUrl : String,
     val price : Price,
     val category: Category,
     val shop : Shop,
-    val inNew : Boolean,
+    val isNew : Boolean,
     val isFreeShipping : Boolean
 )
 
@@ -28,11 +28,11 @@ fun LikeProductEntity.toDomainModel(): Product {
     return Product(
         productId = productId,
         productName = productName,
-        ImageUrl = ImageUrl,
+        imageUrl = imageUrl,
         price = price,
         category = category,
         shop = shop,
-        inNew = inNew,
+        isNew = isNew,
         isFreeShipping = isFreeShipping
     )
 }
