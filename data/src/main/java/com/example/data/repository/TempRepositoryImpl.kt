@@ -6,7 +6,8 @@ import com.example.domain.repository.TempRepository
 import javax.inject.Inject
 
 class TempRepositoryImpl @Inject constructor(
-    private val dataSource: TempDataSource) : TempRepository {
+    private val dataSource: TempDataSource
+) : TempRepository {
 
     override fun getTempModel(): TempModel {
         return dataSource.getTempModel()
